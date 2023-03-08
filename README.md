@@ -15,4 +15,5 @@ What to do:
 5. Pay attention on how to mock static and why static is bad.
 6. Learn about Lombok and how to use it. Play with its features
 7. Learn how to write correct javadocs (look at org.example.service.customer.CustomerServiceImpl for an example)
-8. Potentially, you can use this project to utilize Spring and Hibernate. You can start with utilizing Spring's Dependency Injection
+8. Learn how to write good descriptive log messages (look at org.example.service.customer.CustomerServiceImpl for an example)
+9. Potentially, you can use this project to utilize Spring and Hibernate. You can start with utilizing Spring's Dependency Injection
