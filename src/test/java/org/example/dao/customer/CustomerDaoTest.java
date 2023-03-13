@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// TODO: for testing DAO, use in-memory H2 database
+// TODO: for testing DAO, use in-memory H2 database or a separate DB instance for testing.
 class CustomerDaoTest {
 
     @BeforeEach
