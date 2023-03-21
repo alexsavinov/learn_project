@@ -1,18 +1,19 @@
 package org.example.service;
 
+import org.example.util.DateUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
+import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @ExtendWith(MockitoExtension.class)
 class SomeServiceToTestStaticTest {
@@ -43,5 +44,17 @@ class SomeServiceToTestStaticTest {
 
     @Test
     void someMethodToTestStatic() {
+        LocalDateTime expected = LocalDateTime.of(2023, 2, 2, 2, 2);
+
+        try (MockedStatic<DateUtil> dateUtil = mockStatic(DateUtil.class)) {
+            dateUtil.when(DateUtil::now).thenReturn(expected);
+
+            LocalDateTime actual = subject.someMethodToTestStatic();
+
+            verify(subject).someMethodToTestStatic();
+            verifyNoMoreInteractions(subject);
+
+            assertThat(actual).isEqualTo(expected);
+        }
     }
 }
